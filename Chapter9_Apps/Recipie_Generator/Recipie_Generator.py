@@ -4,7 +4,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from Chaper6_CodeBasics.online_module import *
-from Chaper6_CodeBasics.apikey import *
+from apikey import apiKey
 st.title("AI Recipe Generator")
 
 client = setup_openai(apiKey)
@@ -20,7 +20,7 @@ output_format = ("""
                 """)
 
 recipe = st.text_input("Enter your prompt...", placeholder="Chicken Biryani")
-image_prompt = recipe + "realistic" + "cinematic"
+image_prompt = "it should be the food image of " + recipe + "and that should be realistic and " + "cinematic"
 if st.button("CreateRecipe"):
     with st.spinner("Generating Recipie..."):
         image = generate_image_openai(client, image_prompt)
